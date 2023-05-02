@@ -13,13 +13,12 @@ const Hero = () => {
           <div className="w-1 sm:h-80 h-40 violet-gradient" />
         </div>
 
-        <div className="flex flex-col justify-center items-center mt-5">
+        <div className="flex flex-col justify-center items-center mt-5 mb-8">
           <h1 className={`${styles.heroHeadText} text-white`}>
             Hi, I&#39;m <span className="text-[#915eff]">Ismail</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            As a Full Stack Developer, I&#39;m passionate about creating exceptional digital experiences. With experience in both front-end and back-end development, I specialize in crafting dynamic and engaging web applications.
-          </p>
+          As a Full Stack Developer, I&#39;m enthusiastic about creating outstanding digital experiences that leave a lasting impression. My skills in both front-end and back-end development enable me to craft dynamic and engaging web applications.          </p>
         </div>
       </div>
       
