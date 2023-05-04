@@ -44,9 +44,8 @@ const ComputersCanvas = () => {
   }, [])
 
   return (
-    <div className="pt-16 w-full h-full">
+    <div className="pt-[13.75rem] md:pt-16 lg:pt-[6.75rem] w-full h-full">
     <Canvas
-
     frameloop="demand"
     shadows
     camera={{ position: [20, 3, 5], fov: 25 }}
@@ -64,7 +63,6 @@ const ComputersCanvas = () => {
       <Preload all />
     </Canvas>
     </div>
-
   )
 }
 
