@@ -4,7 +4,11 @@ import {
     creator,
     web,
     javascript,
-    typescript,
+    angular,
+    firebase,
+    mysql,
+    php,
+    symfony,
     html,
     css,
     reactjs,
@@ -71,41 +75,45 @@ import {
       name: "JavaScript",
       icon: javascript,
     },
+    // {
+    //   name: "PHP",
+    //   icon: php,
+    // },
     {
-      name: "TypeScript",
-      icon: typescript,
+      name: "Angular",
+      icon: angular,
     },
     {
-      name: "React JS",
+      name: "React",
       icon: reactjs,
     },
     {
-      name: "Redux Toolkit",
-      icon: redux,
-    },
-    {
-      name: "Tailwind CSS",
-      icon: tailwind,
+      name: "Symfony",
+      icon: symfony,
     },
     {
       name: "Node JS",
       icon: nodejs,
     },
     {
+      name: "Tailwind CSS",
+      icon: tailwind,
+    },
+    {
+      name: "MySql",
+      icon: mysql,
+    },
+    {
+      name: "Firebase",
+      icon: firebase,
+    },
+    {
       name: "MongoDB",
       icon: mongodb,
     },
     {
-      name: "Three JS",
-      icon: threejs,
-    },
-    {
       name: "git",
       icon: git,
-    },
-    {
-      name: "figma",
-      icon: figma,
     },
     {
       name: "docker",
@@ -115,15 +123,29 @@ import {
   
   const experiences = [
     {
-      title: "Accountant",
-      company_name: "Auditors Consulting",
-      icon: auditors,
-      iconBg: "#FFF",
-      date: "September 2020- January 2021",
+      title: "Fullstack Developer - Freelance",
+      company_name: "InQompass",
+      icon: inqompass,
+      iconBg: "#080808",
+      date: "May 2023 - May 2023",
       points: [
-        "Maintained accurate accounts and financial records by preparing and submitting monthly/quarterly VAT returns for clients.",
-        "Managed bookkeeping tasks such as posting receipts, payments, and reconciling bank accounts to ensure accurate financial records.",
-        "Demonstrated expertise in accounting principles by accurately preparing and posting various month-end journal entries and reconciling bank accounts.",
+        "Development and maintenance of a SaaS planning product.",
+        "Implementation of features to streamline the sharing of real-time automatic updates.",
+        "Developed an interface with interactive features like animations, drag and drop, and a newsletter for roadmap updates",
+        "Implementation of Firebase Angular Fire as a data access component.",
+      ],
+    },
+    {
+      title: "Frontend Developer - Angular",
+      company_name: "InQompass",
+      icon: inqompass,
+      iconBg: "#080808",
+      date: "December 2022 - Feb 2023",
+      points: [
+        "Development of the frontend of a web and mobile application with separate admin and recruiter user interfaces.",
+        "Creation of a responsive and intuitive user interface for the web application that adapts to different screen sizes.",
+        "Design an engaging user interface with interactive features, including animated multiple-choice questions (MCQs), that enhance the user experience.",
+        "Integrate Firestore components for efficient and secure data access across the application.",
       ],
     },
     {
@@ -140,16 +162,15 @@ import {
       ],
     },
     {
-      title: "Frontend Developer - Angular",
-      company_name: "InQompass",
-      icon: inqompass,
-      iconBg: "#080808",
-      date: "December 2022 - Feb 2023",
+      title: "Accountant",
+      company_name: "Auditors Consulting",
+      icon: auditors,
+      iconBg: "#FFF",
+      date: "September 2020- January 2021",
       points: [
-        "Development of the frontend of a web and mobile application with separate admin and recruiter user interfaces.",
-        "Creation of a responsive and intuitive user interface for the web application that adapts to different screen sizes.",
-        "Design an engaging user interface with interactive features, including animated multiple-choice questions (MCQs), that enhance the user experience.",
-        "Integrate Firestore components for efficient and secure data access across the application.",
+        "Maintained accurate accounts and financial records by preparing and submitting monthly/quarterly VAT returns for clients.",
+        "Managed bookkeeping tasks such as posting receipts, payments, and reconciling bank accounts to ensure accurate financial records.",
+        "Demonstrated expertise in accounting principles by accurately preparing and posting various month-end journal entries and reconciling bank accounts.",
       ],
     },
     // {

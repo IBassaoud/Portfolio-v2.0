@@ -20,6 +20,11 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
+import firebase from "./tech/firebase.png";
+import mysql from "./tech/mysql.png";
+import php from "./tech/php.png";
+import symfony from "./tech/symfony.png";
+import angular from "./tech/angular.png";
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
@@ -55,6 +60,11 @@ export {
   tailwind,
   typescript,
   threejs,
+  firebase,
+  mysql,
+  php,
+  symfony,
+  angular,
   meta,
   shopify,
   starbucks,
