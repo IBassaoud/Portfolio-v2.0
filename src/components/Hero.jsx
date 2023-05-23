@@ -1,9 +1,18 @@
 import { motion } from 'framer-motion';
-
 import { styles } from '../styles';
 import { ComputersCanvas } from './canvas';
+import React from 'react';
 
- 
+// eslint-disable-next-line react/display-name, react/prop-types
+const HeroHeadText = React.memo(({ children }) => (
+  <h1 className={`${styles.heroHeadText} text-white`}>{children}</h1>
+));
+
+// eslint-disable-next-line react/display-name, react/prop-types
+const HeroSubText = React.memo(({ children }) => (
+  <p className={`${styles.heroSubText} mt-2 text-white-100`}>{children}</p>
+));
+
 const Hero = () => {
   return (
     <section className="relative w-full h-screen mx-auto">
@@ -14,11 +23,12 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col justify-center items-center mt-5 mb-8">
-          <h1 className={`${styles.heroHeadText} text-white`}>
+          <HeroHeadText>
             Hi, I&#39;m <span className="text-[#915eff]">Ismail</span>
-          </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-          As a Fullstack Junior Developer, I&#39;m enthusiastic about creating outstanding digital experiences that leave a lasting impression. My skills in both front-end and back-end development enable me to craft dynamic and engaging web applications.          </p>
+          </HeroHeadText>
+          <HeroSubText>
+            As a Fullstack Junior Developer, I&#39;m enthusiastic about creating outstanding digital experiences that leave a lasting impression. My skills in both front-end and back-end development enable me to craft dynamic and engaging web applications.
+          </HeroSubText>
         </div>
       </div>
       
@@ -45,4 +55,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
+export default Hero;

@@ -16,6 +16,8 @@
     "maath": "^0.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-lazyload": "^3.2.0",
+    "react-query": "^3.39.3",
     "react-router-dom": "^6.11.0",
     "react-tilt": "^1.0.2",
     "react-touch": "^0.4.4",
