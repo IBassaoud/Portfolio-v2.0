@@ -17,5 +17,5 @@ const Tech = memo(() => {
 
 Tech.displayName = 'Tech';
 
-const TechSection = SectionWrapper(Tech, "");
+const TechSection = SectionWrapper(Tech, "skills");
 export default TechSection;

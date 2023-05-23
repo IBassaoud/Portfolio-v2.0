@@ -107,5 +107,5 @@ ProjectCard.propTypes = {
   source_code_link: PropTypes.string.isRequired
 };
 
-const WorksSection = SectionWrapper(Works, "");
+const WorksSection = SectionWrapper(Works, "projects");
 export default WorksSection;
