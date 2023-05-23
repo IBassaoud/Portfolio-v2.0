@@ -35,6 +35,12 @@ import inqompass from "./company/inqompass.png";
 import auditors from "./company/auditors.png";
 
 import carrent from "./carrent.png";
+import mvp_roadmap from "./mvp_roadmap.png";
+import inqompass_mcq from "./inqompass_mcq.gif";
+import pizza_app from "./pizza_app.png";
+import blog from "./blog.png";
+import tour_of_heroes from "./tour_of_heroes.png";
+import symfurious from "./symfurious.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
@@ -70,6 +76,12 @@ export {
   starbucks,
   tesla,
   carrent,
+  mvp_roadmap,
+  inqompass_mcq,
+  pizza_app,
+  blog,
+  tour_of_heroes,
+  symfurious,
   jobit,
   tripguide,
   beweb,

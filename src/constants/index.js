@@ -12,20 +12,20 @@ import {
     html,
     css,
     reactjs,
-    redux,
     tailwind,
     nodejs,
     mongodb,
     git,
-    figma,
     docker,
     beweb,
     inqompass,
     auditors,
-    carrent,
-    jobit,
-    tripguide,
-    threejs,
+    mvp_roadmap,
+    inqompass_mcq,
+    pizza_app,
+    blog,
+    tour_of_heroes,
+    symfurious,
   } from "../assets";
   
   export const navLinks = [
@@ -75,10 +75,10 @@ import {
       name: "JavaScript",
       icon: javascript,
     },
-    // {
-    //   name: "PHP",
-    //   icon: php,
-    // },
+    {
+      name: "PHP",
+      icon: php,
+    },
     {
       name: "Angular",
       icon: angular,
@@ -173,32 +173,6 @@ import {
         "Demonstrated expertise in accounting principles by accurately preparing and posting various month-end journal entries and reconciling bank accounts.",
       ],
     },
-    // {
-    //   title: "Web Developer",
-    //   company_name: "Shopify",
-    //   icon: shopify,
-    //   iconBg: "#383E56",
-    //   date: "Jan 2022 - Jan 2023",
-    //   points: [
-    //     "Developing and maintaining web applications using React.js and other related technologies.",
-    //     "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-    //     "Implementing responsive design and ensuring cross-browser compatibility.",
-    //     "Participating in code reviews and providing constructive feedback to other developers.",
-    //   ],
-    // },
-    // {
-    //   title: "Full stack Developer",
-    //   company_name: "Meta",
-    //   icon: meta,
-    //   iconBg: "#E6DEDD",
-    //   date: "Jan 2023 - Present",
-    //   points: [
-    //     "Developing and maintaining web applications using React.js and other related technologies.",
-    //     "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-    //     "Implementing responsive design and ensuring cross-browser compatibility.",
-    //     "Participating in code reviews and providing constructive feedback to other developers.",
-    //   ],
-    // },
   ];
   
   const testimonials = [
@@ -230,67 +204,138 @@ import {
   
   const projects = [
     {
-      name: "Car Rent",
+      name: "MVP Roadmap",
       description:
-        "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+        "The application serves as a project planning and management tool. It enables teams to collaborate effectively by centralizing tasks, deadlines, and key milestones.",
       tags: [
         {
-          name: "react",
-          color: "blue-text-gradient",
+          name: "Angular",
+          color: "red-text-gradient",
         },
         {
-          name: "mongodb",
-          color: "green-text-gradient",
+          name: "Firebase",
+          color: "orange-text-gradient",
         },
         {
-          name: "tailwind",
+          name: "GithubPages",
           color: "pink-text-gradient",
         },
       ],
-      image: carrent,
+      image: mvp_roadmap,
+      source_code_link: "https://github.com/IBassaoud/mvp-roadmap",
+    },
+    {
+      name: "InQompass MCQ",
+      description:
+        "InQompass MCQ is a digital tool for effectively evaluating candidate skills in recruitment. It enhances hiring quality and efficiency by focusing on actual abilities, not just resumes, through a structured questionnaire.",
+      tags: [
+        {
+          name: "Angular",
+          color: "red-text-gradient",
+        },
+        {
+          name: "Firebase",
+          color: "orange-text-gradient",
+        },
+        {
+          name: "Typescript",
+          color: "blue-text-gradient",
+        },
+      ],
+      image: inqompass_mcq,
       source_code_link: "https://github.com/",
     },
     {
-      name: "Job IT",
+      name: "Pizza mobile app",
       description:
-        "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+        "A customizable and interactive pizza ordering application. Users can customize their pizza by choosing the size and selecting their desired toppings. Each selection dynamically updates the total cost.",
       tags: [
         {
-          name: "react",
+          name: "Ionic",
           color: "blue-text-gradient",
         },
         {
-          name: "restapi",
-          color: "green-text-gradient",
+          name: "React",
+          color: "blue-text-gradient",
         },
         {
-          name: "scss",
-          color: "pink-text-gradient",
+          name: "Typescript",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "Docker",
+          color: "blue-text-gradient",
         },
       ],
-      image: jobit,
-      source_code_link: "https://github.com/",
+      image: pizza_app,
+      source_code_link: "https://github.com/IBassaoud/pizza-mobile-app-Ionic",
     },
     {
-      name: "Trip Guide",
+      name: "Blog application",
       description:
-        "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+        "This Blog app is a streamlined blogging platform. It provides real-time access to the latest posts on the homepage, a comprehensive listing of all articles in the 'posts' section, and a user-friendly interface for registered users to craft new blog posts.",
       tags: [
         {
-          name: "nextjs",
+          name: "PHP",
+          color: "purple-text-gradient",
+        },
+        {
+          name: "Tailwind",
           color: "blue-text-gradient",
         },
         {
-          name: "supabase",
-          color: "green-text-gradient",
+          name: "MySql",
+          color: "yellow-text-gradient",
         },
         {
-          name: "css",
-          color: "pink-text-gradient",
+          name: "PhpMyAdmin",
+          color: "yellow-text-gradient",
         },
       ],
-      image: tripguide,
-      source_code_link: "https://github.com/",
+      image: blog,
+      source_code_link: "https://github.com/IBassaoud/Blog-POO-PHP",
+    },
+    {
+      name: "Tour of Heroes",
+      description:
+        `The "Tour of Heroes" is a step-by-step guide designed to introduce developers to Angular by building a "Heroes" application. The application displays a list of heroes, allowing users to select a hero, view the hero's details, and edit the hero's name.`,
+      tags: [
+        {
+          name: "Angular",
+          color: "red-text-gradient",
+        },
+        {
+          name: "Docker",
+          color: "blue-text-gradient",
+        },
+      ],
+      image: tour_of_heroes,
+      source_code_link: "https://github.com/IBassaoud/Heroes-app-Angular",
+    },
+    {
+      name: "Project Symfurious",
+      description:
+        "Symfurious is an interactive platform designed for orchestrating car racing events. It streamlines the process of driver registration, race scheduling, and real-time results tracking.",
+      tags: [
+        {
+          name: "PHP",
+          color: "purple-text-gradient",
+        },
+        {
+          name: "Symfony",
+          color: "gray-text-gradient",
+        },
+        {
+          name: "MySql",
+          color: "yellow-text-gradient",
+        },
+        {
+          name: "PhpMyAdmin",
+          color: "yellow-text-gradient",
+        },
+      ],
+      image: symfurious,
+      source_code_link: "https://github.com/IBassaoud/Symfony-project_symfurious",
     },
   ];
   
