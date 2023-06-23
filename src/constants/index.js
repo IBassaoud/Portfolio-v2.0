@@ -46,6 +46,10 @@ import {
       title: "Projects",
     },
     {
+      id: "testimonials",
+      title: "Testimonials",
+    },
+    {
       id: "contact",
       title: "Contact",
     },
@@ -185,28 +189,25 @@ import {
   
   const testimonials = [
     {
-      testimonial:
-        "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-      name: "Sara Lee",
-      designation: "CFO",
-      company: "Acme Co",
-      image: "https://randomuser.me/api/portraits/women/4.jpg",
+      testimonial:"Après quelques mois passés avec Ismail, je peux vous assurer qu'il sait parfaitement prendre en charge un projet et le developper avec beaucoup d'autonomie, toujours prêt à fournir des efforts pour acquerir ou optimiser le code, un très bon élément à intégrer dans une équipe !",
+      name: "Pierre Husson",
+      designation: "Formateur référent",
+      company: "BeWeB / Fondespierre",
+      image: "https://cdn.discordapp.com/avatars/690556978086412290/30de8d863900d0ccfc9e19a645375f22.webp",
     },
     {
-      testimonial:
-        "I've never met a web developer who truly cares about their clients' success like Rick does.",
-      name: "Chris Brown",
-      designation: "COO",
-      company: "DEF Corp",
-      image: "https://randomuser.me/api/portraits/men/5.jpg",
+      testimonial:"Ismail a su travailler en grande autonomie dans notre entreprise, malgré le fait d'être totalement en distanciel. Il a vite compris l'architecture du projet et su se rendre efficace en peu de temps. Il a fait preuve d'un grand professionnalisme et motivation.",
+      name: "Martin R.",
+      designation: "Senior développeur",
+      company: "WGMM",
+      image: "https://cdn.discordapp.com/avatars/354337805733986305/04c16adc8348559ed7e23dd5915ad2a9.webp",
     },
     {
-      testimonial:
-        "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-      name: "Lisa Wang",
-      designation: "CTO",
-      company: "456 Enterprises",
-      image: "https://randomuser.me/api/portraits/women/6.jpg",
+      testimonial:"Ismail has been a valuable asset to our team in his time in InQompass as a Junior Full Stack Developer. He demonstrated keen learning, great teamwork, and strong technical skills, especially on Angular and Css. Clearly one of the most promising junior talent I had the chance to work with.",
+      name: "Teddy DEFREL",
+      designation: "Product Manager",
+      company: "InQompass",
+      image: "https://media.licdn.com/dms/image/C4D03AQF7dFuGZevGdA/profile-displayphoto-shrink_800_800/0/1607792815908?e=1692835200&v=beta&t=W5waqMAutWig58hAwwQN_huiUfy9GL1vWKglfZucqTQ",
     },
   ];
   
