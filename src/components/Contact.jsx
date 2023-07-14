@@ -40,7 +40,7 @@ const Contact = () => {
         to_email: 'ismail.bassaoud@gmail.com',
         message: form.message
       },
-      'VkfjMhxJWhbJkvCYr'
+      'TODO_PUBLIC_KEY' // Enter the email js public jey here
       )
       .then( () => {
         setLoading(false);
@@ -50,7 +50,7 @@ const Contact = () => {
           email: '',
           message: '',
         })
-        
+
       }, (error) => {
         setLoading(false);
 
