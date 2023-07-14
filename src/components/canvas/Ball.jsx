@@ -7,9 +7,10 @@ import CanvasLoader from '../Loader';
 import useTextureLoader from '../../hooks/useTextureLoader';
 import { useWebGLContext } from '../../contexts/WebGLContext';
 import * as THREE from 'three';
+import { useInView } from 'react-intersection-observer';
 
-const Ball = memo((props) => {
-  const { data: decal, isLoading } = useTextureLoader(props.imgUrl);
+const Ball = memo(({ imgUrl, inView }) => {
+  const { data: decal, isLoading } = useTextureLoader(inView ? imgUrl : null);
   const ref = useRef();
 
   useFrame(({ camera }) => {
@@ -59,7 +60,7 @@ const Ball = memo((props) => {
       <ambientLight intensity={0.25} />
       <directionalLight position={[0, 0, 0.05]} />
       <SpotLight position={[0, 5, 10]} angle={0.3} penumbra={1} castShadow />
-      <mesh ref={ref} castShadow receiveShadow scale={2.75}>
+      <mesh ref={ref} castShadow receiveShadow scale={2.3}>
         <icosahedronGeometry args={[1, 1]} />
         <meshLambertMaterial
           color="#FFF8EB"
@@ -76,29 +77,39 @@ const Ball = memo((props) => {
       </mesh>
     </Float>
   );
-}, (prevProps, nextProps) => prevProps.imgUrl === nextProps.imgUrl);
+}, (prevProps, nextProps) => prevProps.imgUrl === nextProps.imgUrl && prevProps.inView === nextProps.inView);
 
 Ball.displayName = 'Ball';
 
 Ball.propTypes = {
   imgUrl: PropTypes.string.isRequired,
+  inView: PropTypes.bool.isRequired,
 };
 
 const BallCanvas = ({ icon }) => {
   const { setContext } = useWebGLContext();
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0,
+    rootMargin: '100% 0px',
+  });
 
   const handleCanvasCreated = ({ gl }) => {
     setContext(gl);
   };
 
   return (
-    <Canvas frameloop="demand" gl={{ preserveDrawingBuffer: true }} onCreated={handleCanvasCreated}>
-      <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls enableZoom={false} />
-        <Ball imgUrl={icon} />
-      </Suspense>
-      <Preload all />
-    </Canvas>
+    <div ref={ref}>
+      {inView && (
+        <Canvas frameloop="demand" gl={{ preserveDrawingBuffer: true }} onCreated={handleCanvasCreated}>
+          <Suspense fallback={<CanvasLoader />}>
+            <OrbitControls enableZoom={false} />
+            <Ball imgUrl={icon} inView={inView} />
+          </Suspense>
+          <Preload all />
+        </Canvas>
+      )}
+    </div>
   );
 };
 

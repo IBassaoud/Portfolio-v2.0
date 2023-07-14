@@ -28,9 +28,9 @@ const App = () => {
         <Suspense fallback={<LoadingSpinner />}>
           <div className="relative z-0 bg-primary">
             <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-              <div className="bg-red-500 text-white font-medium text-sm rounded-bl-md rounded-br-md p-1 top-[94px] absolute w-full text-center">
+              {/* <div className="bg-red-500 text-white font-medium text-sm rounded-bl-md rounded-br-md p-1 top-[94px] absolute w-full text-center">
                 Please note that this website is currently under development. Thank you for your patience!
-              </div>
+              </div> */}
               <Navbar />
               <Hero />
             </div>

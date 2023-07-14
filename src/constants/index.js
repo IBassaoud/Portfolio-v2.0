@@ -7,12 +7,12 @@ import {
     angular,
     firebase,
     mysql,
-    php,
+    // php,
     symfony,
     html,
     css,
     reactjs,
-    tailwind,
+    // tailwind,
     nodejs,
     mongodb,
     git,
@@ -87,10 +87,10 @@ import {
       name: "JavaScript",
       icon: javascript,
     },
-    {
-      name: "PHP",
-      icon: php,
-    },
+    // {
+    //   name: "PHP",
+    //   icon: php,
+    // },
     {
       name: "Angular",
       icon: angular,
@@ -107,10 +107,10 @@ import {
       name: "Node JS",
       icon: nodejs,
     },
-    {
-      name: "Tailwind CSS",
-      icon: tailwind,
-    },
+    // {
+    //   name: "Tailwind CSS",
+    //   icon: tailwind,
+    // },
     {
       name: "MySql",
       icon: mysql,
