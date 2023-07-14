@@ -4,7 +4,7 @@ import { TextureLoader } from 'three';
 import { useQuery } from 'react-query';
 
 const useTextureLoader = (path) => {
-  const { data } = useQuery(
+  const query = useQuery(
     path,
     () => new Promise((resolve, reject) =>
       new TextureLoader().load(path, resolve, reject)),
@@ -13,7 +13,11 @@ const useTextureLoader = (path) => {
       cacheTime: Infinity,
     }
   );
-  return data;
+  
+  return {
+    data: query.data,
+    isLoading: query.isLoading,
+  };
 };
 
 export default useTextureLoader;

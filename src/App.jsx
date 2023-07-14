@@ -2,15 +2,16 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider } from 'react-query';
 import queryClient from './queryClient';
+import { WebGLProvider } from './contexts/WebGLContext';
 
 const About = lazy(() => import('./components/About'));
-const Contact = lazy(() => import('./components/Contact'));
 const Experience = lazy(() => import('./components/Experience'));
 const Feedbacks = lazy(() => import('./components/Feedbacks'));
 const Hero = lazy(() => import('./components/Hero'));
 const Navbar = lazy(() => import('./components/Navbar'));
 const Tech = lazy(() => import('./components/Tech'));
 const Works = lazy(() => import('./components/Works'));
+const Contact = lazy(() => import('./components/Contact'));
 const StarsCanvas = lazy(() => import('./components/canvas/Stars'));
 
 const LoadingSpinner = () => (
@@ -23,6 +24,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+      <WebGLProvider>
         <Suspense fallback={<LoadingSpinner />}>
           <div className="relative z-0 bg-primary">
             <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
@@ -37,12 +39,13 @@ const App = () => {
             <Tech />     
             <Works />     
             <Feedbacks />
-            {/* <div className="relative z-0">
+            <div className="relative z-0">
               <Contact />
               <StarsCanvas />
-            </div> */}
+            </div>
           </div>
         </Suspense>
+      </WebGLProvider>
       </BrowserRouter>
     </QueryClientProvider>
   )

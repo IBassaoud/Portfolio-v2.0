@@ -1,30 +1,68 @@
 /* eslint-disable react/no-unknown-property */
-import { Suspense, useEffect, useState, memo } from "react";
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
+import { Suspense, memo, useEffect, useState, useRef } from "react";
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
 import CanvasLoader from '../Loader';
 import PropTypes from 'prop-types';
-import { useQuery, useQueryClient } from 'react-query';
+import * as THREE from 'three';
+import useGLTFLoader from '../../hooks/useGLTFLoader';
+import { useWebGLContext } from '../../contexts/WebGLContext';
 
 const Computers = memo(({ isMobile }) => {
-  const queryClient = useQueryClient();
-  const { scene: computer } = useGLTF('./desktop_pc/scene.gltf');
+  const { gltf, isLoading, error } = useGLTFLoader('./desktop_pc/scene.gltf');
+  const ref = useRef();
 
-  // Define a unique key for the query
-  const queryKey = './desktop_pc/scene.gltf';
+  useEffect(() => {
+    if (error) {
+      console.error("Failed to load GLTF model:", error);
+    }
+  }, [error]);
 
-  // Fetch the model and cache it using React Query
-  const fetchModel = async () => {
-    const response = await useGLTF.preload('./desktop_pc/scene.gltf');
-    queryClient.setQueryData(queryKey, response);
-    return response;
+  useFrame(({ camera }) => {
+    if (!ref.current) {
+      return;
+    }
+  
+    const frustum = new THREE.Frustum();
+    frustum.setFromProjectionMatrix(
+      new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse)
+    );
+  
+    const box = new THREE.Box3().setFromObject(ref.current);
+    const isVisible = frustum.intersectsBox(box);
+  
+    if (!isVisible) {
+      // Unload the 3D model when it's not visible
+      ref.current.traverse((object) => {
+        if (!object.isMesh) return;
+        object.geometry.dispose();
+        if (object.material.isMaterial) {
+          cleanMaterial(object.material);
+        } else {
+          for (const material of object.material) cleanMaterial(material);
+        }
+      });
+    }
+  });  
+
+  const cleanMaterial = (material) => {
+    material.dispose();
+
+    // dispose textures
+    for (const key of Object.keys(material)) {
+      const value = material[key];
+      if (value && typeof value === 'object' && 'minFilter' in value) {
+        value.dispose();
+      }
+    }
   };
 
-  // Use React Query's useQuery hook to fetch the model and cache it
-  const { data: cachedModel } = useQuery(queryKey, fetchModel);
+  if (isLoading || !gltf || !gltf.scene) {
+    return <CanvasLoader />;
+  }
 
   return (
-    <mesh>
+    <mesh ref={ref}>
       <hemisphereLight intensity={0.2} groundColor="black" />
       <spotLight
         position={[-20, 50, 10]}
@@ -35,7 +73,7 @@ const Computers = memo(({ isMobile }) => {
         shadow-mapSize-width={1024}
       />
       <pointLight intensity={0.5} />
-      <primitive object={cachedModel || computer} scale={isMobile ? 0.7 : 0.75} position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]} rotation={[-0.01, -0.2, -0.02]} />
+      <primitive object={gltf.scene} scale={isMobile ? 0.7 : 0.75} position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]} rotation={[-0.01, -0.2, -0.02]} />
     </mesh>
   )
 }, (prevProps, nextProps) => prevProps.isMobile === nextProps.isMobile);
@@ -46,6 +84,7 @@ Computers.propTypes = {
 };
 
 const ComputersCanvas = () => {
+  const { setContext } = useWebGLContext();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -63,6 +102,10 @@ const ComputersCanvas = () => {
     }
   }, [])
 
+  const handleCanvasCreated = ({ gl }) => {
+    setContext(gl);
+  };
+
   return (
     <div className="pt-[13.75rem] md:pt-16 lg:pt-[6.75rem] w-full h-full">
       <Canvas
@@ -70,6 +113,7 @@ const ComputersCanvas = () => {
         shadows
         camera={{ position: isMobile ? [10, 1.5, 2.5] : [20, 3, 5], fov: isMobile ? 35 : 25 }}
         gl={{ preserveDrawingBuffer: true, antialias: true }}
+        onCreated={handleCanvasCreated}
       >
         <Suspense fallback={<CanvasLoader />}>
           <OrbitControls 

@@ -1,34 +1,65 @@
 /* eslint-disable react/no-unknown-property */
-import { Suspense, memo } from 'react';
+import { Suspense, memo, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Canvas, useLoader } from '@react-three/fiber';
-import { Decal, Float, OrbitControls, Preload } from '@react-three/drei';
-import { TextureLoader } from 'three';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Decal, Float, OrbitControls, Preload, SpotLight } from '@react-three/drei';
 import CanvasLoader from '../Loader';
-import { useQuery, useQueryClient } from 'react-query';
+import useTextureLoader from '../../hooks/useTextureLoader';
+import { useWebGLContext } from '../../contexts/WebGLContext';
+import * as THREE from 'three';
 
 const Ball = memo((props) => {
-  const queryClient = useQueryClient();
-  const decal = useLoader(TextureLoader, props.imgUrl);
+  const { data: decal, isLoading } = useTextureLoader(props.imgUrl);
+  const ref = useRef();
 
-  // Define a unique key for the query
-  const queryKey = `ball-img:${props.imgUrl}`;
+  useFrame(({ camera }) => {
+    if (!ref.current) return;
+  
+    const frustum = new THREE.Frustum();
+    frustum.setFromProjectionMatrix(
+      new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse)
+    );
+  
+    const box = new THREE.Box3().setFromObject(ref.current);
+    const isVisible = frustum.intersectsBox(box);
+  
+    if (!isVisible && ref.current) {
+      // Unload the 3D model when it's not visible
+      ref.current.traverse((object) => {
+        if (!object.isMesh) return;
+        object.geometry.dispose();
+        if (object.material.isMaterial) {
+          cleanMaterial(object.material);
+        } else {
+          for (const material of object.material) cleanMaterial(material);
+        }
+      });
+    }
+  });
+  
 
-  // Fetch the texture and cache it using React Query
-  const fetchTexture = async () => {
-    const response = await useLoader.preload(TextureLoader, props.imgUrl);
-    queryClient.setQueryData(queryKey, response);
-    return response;
+  const cleanMaterial = (material) => {
+    material.dispose();
+
+    // dispose textures
+    for (const key of Object.keys(material)) {
+      const value = material[key];
+      if (value && typeof value === 'object' && 'minFilter' in value) {
+        value.dispose();
+      }
+    }
   };
 
-  // Use React Query's useQuery hook to fetch the texture and cache it
-  const { data: cachedTexture } = useQuery(queryKey, fetchTexture);
+  if (isLoading) {
+    return null;
+  }
 
   return (
-    <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
+    <Float speed={0} rotationIntensity={0} floatIntensity={0}>
       <ambientLight intensity={0.25} />
       <directionalLight position={[0, 0, 0.05]} />
-      <mesh castShadow receiveShadow scale={2.75}>
+      <SpotLight position={[0, 5, 10]} angle={0.3} penumbra={1} castShadow />
+      <mesh ref={ref} castShadow receiveShadow scale={2.75}>
         <icosahedronGeometry args={[1, 1]} />
         <meshLambertMaterial
           color="#FFF8EB"
@@ -38,7 +69,7 @@ const Ball = memo((props) => {
         />
         <Decal
           position={[0, 0, 1]}
-          map={cachedTexture || decal}
+          map={decal}
           rotation={[2 * Math.PI, 0, 6.25]}
           flatShading
         />
@@ -54,8 +85,14 @@ Ball.propTypes = {
 };
 
 const BallCanvas = ({ icon }) => {
+  const { setContext } = useWebGLContext();
+
+  const handleCanvasCreated = ({ gl }) => {
+    setContext(gl);
+  };
+
   return (
-    <Canvas frameloop="demand" gl={{ preserveDrawingBuffer: true }}>
+    <Canvas frameloop="demand" gl={{ preserveDrawingBuffer: true }} onCreated={handleCanvasCreated}>
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls enableZoom={false} />
         <Ball imgUrl={icon} />

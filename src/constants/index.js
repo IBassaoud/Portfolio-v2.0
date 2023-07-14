@@ -62,11 +62,11 @@ import {
     },
     {
       title: "Frontend Developer",
-      icon: mobile,
+      icon: backend,
     },
     {
       title: "Backend Developer",
-      icon: backend,
+      icon: mobile,
     },
     {
       title: "Fullstack Developer",
