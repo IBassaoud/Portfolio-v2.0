@@ -26,23 +26,16 @@ import php from "./tech/php.png";
 import symfony from "./tech/symfony.png";
 import angular from "./tech/angular.png";
 
-import meta from "./company/meta.png";
-import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
-import tesla from "./company/tesla.png";
 import beweb from "./company/beWebBlancWeb.png";
 import inqompass from "./company/inqompass.png";
 import auditors from "./company/auditors.png";
 
-import carrent from "./carrent.png";
 import mvp_roadmap from "./mvp_roadmap.png";
 import inqompass_mcq from "./inqompass_mcq.gif";
 import pizza_app from "./pizza_app.png";
 import blog from "./blog.png";
 import tour_of_heroes from "./tour_of_heroes.png";
 import symfurious from "./symfurious.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
 
 export {
   logo,
@@ -71,19 +64,12 @@ export {
   php,
   symfony,
   angular,
-  meta,
-  shopify,
-  starbucks,
-  tesla,
-  carrent,
   mvp_roadmap,
   inqompass_mcq,
   pizza_app,
   blog,
   tour_of_heroes,
   symfurious,
-  jobit,
-  tripguide,
   beweb,
   inqompass,
   auditors,

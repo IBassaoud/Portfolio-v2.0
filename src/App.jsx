@@ -1,6 +1,8 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider } from 'react-query';
+import PropTypes from 'prop-types';
+import { useInView } from 'react-intersection-observer';
 import queryClient from './queryClient';
 import { WebGLProvider } from './contexts/WebGLContext';
 
@@ -20,6 +22,19 @@ const LoadingSpinner = () => (
   </div>
 );
 
+const LazyLoadComponent = ({ children }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true, // The component will be loaded once and not unload when out of view
+  });
+
+  return <div ref={ref}>{inView && children}</div>;
+};
+
+LazyLoadComponent.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
@@ -28,19 +43,28 @@ const App = () => {
         <Suspense fallback={<LoadingSpinner />}>
           <div className="relative z-0 bg-primary">
             <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-              {/* <div className="bg-red-500 text-white font-medium text-sm rounded-bl-md rounded-br-md p-1 top-[94px] absolute w-full text-center">
-                Please note that this website is currently under development. Thank you for your patience!
-              </div> */}
               <Navbar />
               <Hero />
             </div>
-            <About />     
-            <Experience />     
-            <Tech />     
-            <Works />     
-            <Feedbacks />
+            <LazyLoadComponent>
+              <About />
+            </LazyLoadComponent>
+            <LazyLoadComponent>
+              <Experience />
+            </LazyLoadComponent>
+            <LazyLoadComponent>
+              <Tech />
+            </LazyLoadComponent>
+            <LazyLoadComponent>
+              <Works />
+            </LazyLoadComponent>
+            <LazyLoadComponent>
+              <Feedbacks />
+            </LazyLoadComponent>
             <div className="relative z-0">
-              <Contact />
+              <LazyLoadComponent>
+                <Contact />
+              </LazyLoadComponent>
               <StarsCanvas />
             </div>
           </div>

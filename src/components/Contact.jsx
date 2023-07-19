@@ -7,10 +7,6 @@ import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
 
-// template_tiopq5a
-// service_ky8nzdn
-// VkfjMhxJWhbJkvCYr
-
 const Contact = () => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef();
@@ -40,7 +36,7 @@ const Contact = () => {
         to_email: 'ismail.bassaoud@gmail.com',
         message: form.message
       },
-      'TODO_PUBLIC_KEY' // Enter the email js public jey here
+      'VkfjMhxJWhbJkvCYr' // TODO: Enter here the API PUBLIC KEY emailjs
       )
       .then( () => {
         setLoading(false);
@@ -50,7 +46,7 @@ const Contact = () => {
           email: '',
           message: '',
         })
-
+        
       }, (error) => {
         setLoading(false);
 
@@ -99,12 +95,13 @@ const Contact = () => {
           <label className="flex flex-col">
             <span className="text-white font-medium mb-4">Your Message</span>
             <textarea
-              rows="7"
+              rows="5"
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="Feel free to express your thoughts"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              placeholder="Tell me more about how we can collaborate"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium custom-scrollbar"
+              style={{ maxHeight: '16em', minHeight: '10em' }}
             />
           </label>
 
