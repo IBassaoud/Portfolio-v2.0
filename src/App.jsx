@@ -24,10 +24,10 @@ const LoadingSpinner = () => (
 
 const LazyLoadComponent = ({ children }) => {
   const { ref, inView } = useInView({
-    triggerOnce: true, // The component will be loaded once and not unload when out of view
+    triggerOnce: true,
   });
 
-  return <div ref={ref}>{inView && children}</div>;
+  return <div ref={ref}>{inView && <Suspense>{children}</Suspense>}</div>;
 };
 
 LazyLoadComponent.propTypes = {
