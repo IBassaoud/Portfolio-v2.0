@@ -27,7 +27,7 @@ const Hero = () => {
             Hi, I&#39;m <span className="text-[#915eff]">Ismail</span>
           </HeroHeadText>
           <HeroSubText>
-            As a Fullstack Junior Developer, I&#39;m enthusiastic about creating outstanding digital experiences that leave a lasting impression. My skills in both front-end and back-end development enable me to craft dynamic and engaging web applications.
+            As a Fullstack Developer, I&#39;m enthusiastic about creating outstanding digital experiences that leave a lasting impression. My skills in both front-end and back-end development enable me to craft dynamic and engaging web applications.
           </HeroSubText>
         </div>
       </div>

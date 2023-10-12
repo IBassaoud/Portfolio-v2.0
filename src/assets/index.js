@@ -29,6 +29,7 @@ import angular from "./tech/angular.png";
 import beweb from "./company/beWebBlancWeb.png";
 import inqompass from "./company/inqompass.png";
 import auditors from "./company/auditors.png";
+import netia from "./company/netia.png";
 
 import mvp_roadmap from "./mvp_roadmap.png";
 import inqompass_mcq from "./inqompass_mcq.gif";
@@ -37,7 +38,14 @@ import blog from "./blog.png";
 import tour_of_heroes from "./tour_of_heroes.png";
 import symfurious from "./symfurious.png";
 
+import logo_pierre from "./logo_pierre.webp";
+import logo_martin from "./logo_martin.webp";
+import logo_teddy from "./logo_teddy.png";
+
 export {
+  logo_pierre,
+  logo_martin,
+  logo_teddy,
   logo,
   backend,
   creator,
@@ -73,4 +81,5 @@ export {
   beweb,
   inqompass,
   auditors,
+  netia,
 };
