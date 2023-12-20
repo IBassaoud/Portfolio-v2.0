@@ -38,7 +38,14 @@ import blog from "./blog.png";
 import tour_of_heroes from "./tour_of_heroes.png";
 import symfurious from "./symfurious.png";
 
+import logo_pierre from "./logo_pierre.webp";
+import logo_martin from "./logo_martin.webp";
+import logo_teddy from "./logo_teddy.png";
+
 export {
+  logo_pierre,
+  logo_martin,
+  logo_teddy,
   logo,
   backend,
   creator,
@@ -75,4 +82,5 @@ export {
   inqompass,
   netia,
   auditors,
+  netia,
 };
