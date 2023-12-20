@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
 import queryClient from './queryClient';
 import { WebGLProvider } from './contexts/WebGLContext';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n';
 
 const About = lazy(() => import('./components/About'));
 const Experience = lazy(() => import('./components/Experience'));
@@ -37,41 +39,43 @@ LazyLoadComponent.propTypes = {
 
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-      <WebGLProvider>
-        <Suspense fallback={<LoadingSpinner />}>
-          <div className="relative z-0 bg-primary">
-            <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-              <Navbar />
-              <Hero />
-            </div>
-            <LazyLoadComponent>
-              <About />
-            </LazyLoadComponent>
-            <LazyLoadComponent>
-              <Experience />
-            </LazyLoadComponent>
-            <LazyLoadComponent>
-              <Tech />
-            </LazyLoadComponent>
-            <LazyLoadComponent>
-              <Works />
-            </LazyLoadComponent>
-            <LazyLoadComponent>
-              <Feedbacks />
-            </LazyLoadComponent>
-            <div className="relative z-0">
-              <LazyLoadComponent>
-                <Contact />
-              </LazyLoadComponent>
-              <StarsCanvas />
-            </div>
-          </div>
-        </Suspense>
-      </WebGLProvider>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <I18nextProvider i18n={i18n}>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <WebGLProvider>
+            <Suspense fallback={<LoadingSpinner />}>
+              <div className="relative z-0 bg-primary">
+                <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
+                  <Navbar />
+                  <Hero />
+                </div>
+                <LazyLoadComponent>
+                  <About />
+                </LazyLoadComponent>
+                <LazyLoadComponent>
+                  <Experience />
+                </LazyLoadComponent>
+                <LazyLoadComponent>
+                  <Tech />
+                </LazyLoadComponent>
+                <LazyLoadComponent>
+                  <Works />
+                </LazyLoadComponent>
+                <LazyLoadComponent>
+                  <Feedbacks />
+                </LazyLoadComponent>
+                <div className="relative z-0">
+                  <LazyLoadComponent>
+                    <Contact />
+                  </LazyLoadComponent>
+                  <StarsCanvas />
+                </div>
+              </div>
+            </Suspense>
+          </WebGLProvider>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </I18nextProvider>
   )
 }
 

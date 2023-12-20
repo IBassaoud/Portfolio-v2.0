@@ -13,8 +13,8 @@ const SectionWrapper = (Component, idName) =>
                 if (element) {
                     // Use setTimeout to ensure that the scroll happens after the element is rendered
                     setTimeout(() => {
-                        element.scrollIntoView();
-                    }, 0);
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    }, 150);
                 }
             }
         }, []);

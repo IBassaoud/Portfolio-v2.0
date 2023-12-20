@@ -8,3 +8,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>,
 )
+
+// TODO: Add a bar scrolling | Add a buton that pops up in mid scrolling of the page to scroll up to the top of the page | Find a way to add social medias links etc.

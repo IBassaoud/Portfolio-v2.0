@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { ComputersCanvas } from './canvas';
 import React from 'react';
+import useAppTranslation from '../hooks/useAppTranslation';
 
 // eslint-disable-next-line react/display-name, react/prop-types
 const HeroHeadText = React.memo(({ children }) => (
@@ -14,6 +15,8 @@ const HeroSubText = React.memo(({ children }) => (
 ));
 
 const Hero = () => {
+  const t = useAppTranslation();
+
   return (
     <section className="relative w-full h-screen mx-auto">
       <div className={`${styles.paddingX} absolute inset-0 top-[130px] max-w-7xl mx-auto flex flex-row items-start gap-5`}>
@@ -24,10 +27,10 @@ const Hero = () => {
 
         <div className="flex flex-col justify-center items-center mt-5 mb-8">
           <HeroHeadText>
-            Hi, I&#39;m <span className="text-[#915eff]">Ismail</span>
+          {t('heroHeadText1')}<span className="text-[#915eff]">{t('heroHeadText2')}</span>
           </HeroHeadText>
           <HeroSubText>
-            As a Fullstack Junior Developer, I&#39;m enthusiastic about creating outstanding digital experiences that leave a lasting impression. My skills in both front-end and back-end development enable me to craft dynamic and engaging web applications.
+            {t('heroHeadAboutMe')}
           </HeroSubText>
         </div>
       </div>

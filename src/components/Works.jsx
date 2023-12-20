@@ -7,6 +7,7 @@ import { github } from '../assets';
 import { SectionWrapper } from '../hoc';
 import { projects } from "../constants";
 import PropTypes from 'prop-types';
+import useAppTranslation from '../hooks/useAppTranslation';
 
 const fadeInOptions = {
   initial: { opacity: 0, y: -30 },
@@ -52,6 +53,8 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
 }
 
 const Works = () => {
+  const t = useAppTranslation();
+
   return (
     <> 
       <motion.div 

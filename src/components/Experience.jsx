@@ -2,11 +2,18 @@ import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeli
 import { motion } from 'framer-motion';
 import 'react-vertical-timeline-component/style.min.css';
 import { styles } from '../styles';
-import { experiences } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { textVariant } from '../utils/motion';
 import PropTypes from 'prop-types';
+import useAppTranslation from '../hooks/useAppTranslation';
+import { inqompass,beweb, auditors, netia } from '../assets';
 
+const iconMapping = {
+  inqompass: inqompass,
+  beweb: beweb,
+  auditors: auditors,
+  netia: netia,
+};
 
 const ExperienceCard = ({ experience }) => (
   <VerticalTimelineElement
@@ -16,7 +23,7 @@ const ExperienceCard = ({ experience }) => (
     iconStyle={{background: experience.iconBg}}
     icon={
       <div className="flex justify-center items-center w-full h-full">
-      <img src={experience.icon} alt={experience.company_name} className="w-[80%] h-[80%] object-contain" />
+      <img src={iconMapping[experience.icon]} alt={experience.company_name} className="w-[80%] h-[80%] object-contain" />
       </div>
     }
   >
@@ -43,6 +50,9 @@ ExperienceCard.propTypes = {
 };
 
 const Experience = () => {
+  const t = useAppTranslation();
+  const experiencesData = t('experiences', { returnObjects: true }); // Fetch experiences data using the translation function
+
   return (
     <>
     <motion.div variants={textVariant()}>
@@ -52,7 +62,7 @@ const Experience = () => {
 
     <div className="mt-8 flex flex-col">
       <VerticalTimeline>
-        {experiences.map((experience, index) => (
+        {experiencesData.map((experience, index) => (
           <ExperienceCard key={index} experience={experience} />
         ))}
       </VerticalTimeline>

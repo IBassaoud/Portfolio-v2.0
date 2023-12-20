@@ -7,12 +7,10 @@ import {
     angular,
     firebase,
     mysql,
-    // php,
     symfony,
     html,
     css,
     reactjs,
-    // tailwind,
     nodejs,
     mongodb,
     git,
@@ -322,7 +320,7 @@ import {
       source_code_link: "https://github.com/IBassaoud/Heroes-app-Angular",
     },
     {
-      name: "Project Symfurious",
+      name: "BeWeb - AdoptUnBeweber",
       description:
         "Symfurious is an interactive platform designed for orchestrating car racing events. It streamlines the process of driver registration, race scheduling, and real-time results tracking.",
       tags: [

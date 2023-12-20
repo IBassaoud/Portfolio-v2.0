@@ -29,6 +29,7 @@ import angular from "./tech/angular.png";
 import beweb from "./company/beWebBlancWeb.png";
 import inqompass from "./company/inqompass.png";
 import auditors from "./company/auditors.png";
+import netia from "./company/netia.png";
 
 import mvp_roadmap from "./mvp_roadmap.png";
 import inqompass_mcq from "./inqompass_mcq.gif";
@@ -72,5 +73,6 @@ export {
   symfurious,
   beweb,
   inqompass,
+  netia,
   auditors,
 };
